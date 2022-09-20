@@ -1,0 +1,107 @@
+.logoContainer {
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--color-White);
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 370px;
+  height: 40px;
+  user-select: none;
+  margin-bottom: 120px;
+  position: absolute;
+  top: 56px;
+  left: 62px;
+}
+
+.linksDiv {
+  display: flex;
+  position: relative;
+  margin-left: 50px;
+}
+.navbar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 10px;
+  color: var(--color-White);
+  position: relative;
+}
+
+.navbar a::before {
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: var(--color-White);
+  position: absolute;
+  left: 25%;
+  bottom: -5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 200ms ease-in;
+}
+.navbar a:hover::before {
+  opacity: 1;
+  visibility: visible;
+  width: 50%;
+}
+
+.openNav,
+.closeNav {
+  padding-top: 8px;
+  font-size: 2.2rem;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+  color: var(--color-White);
+}
+
+.openNav {
+  display: none;
+}
+
+.closeNav:hover {
+  color: rgb(238, 124, 11);
+  opacity: 100%;
+  transform: rotate(90deg);
+}
+
+.logoAndClose {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 195px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 80%;
+    top: 44px;
+    left: 25px;
+  }
+  .openNav {
+    display: block;
+    margin-right: 45%;
+  }
+  .linksDiv {
+    /*display: none;*/
+    top: -12vh;
+  }
+}
+@media (max-width: 375px) {
+  .openNav {
+    margin-right: 40%;
+  }
+}

@@ -1,8 +1,52 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import styles from "../styles/Home.module.css";
+import CmdComponent from "../components/CmdComponent";
+import ImageComp from "../components/ImageComp/ImageComp";
+import NavBar from "../components/NavBar";
+import Arrow from "../components/Arrow";
+
+let content = [
+  {
+    title: "Discover innovative ways to decorate",
+    text: `We provide unmatched quality, comfort, and style for property owners across the country. 
+  Our experts combine form and function in bringing your vision to life. Create a room in your 
+  own style with our collection and make your property a reflection of you and what you love.`,
+    imageTitle: "hero-1",
+  },
+  {
+    title: "We are available all across the globe",
+    text: `With stores all over the world, it's easy for you to find furniture for your home or place of business. 
+  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our 
+  store locator. Any questions? Don't hesitate to contact us today.`,
+    imageTitle: "hero-2",
+  },
+
+  {
+    title: "Manufactured with the best materials",
+    text: `Our modern furniture store provide a high level of quality. Our company has invested in advanced technology 
+  to ensure that every product is made as perfect and as consistent as possible. With three decades of 
+  experience in this industry, we understand what customers want for their home and office.`,
+    imageTitle: "hero-3",
+  },
+];
 
 export default function Home() {
+  const [contentIndex, setContentIndex] = useState(0);
+  const handleClick = (e) => {
+    const clicked = e.target.id;
+    const contentLen = content.length - 1;
+    setContentIndex((contentIndex) =>
+      clicked === "right"
+        ? contentIndex === contentLen
+          ? 0
+          : contentIndex + 1
+        : contentIndex === 0
+        ? contentLen
+        : contentIndex - 1
+    );
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -12,58 +56,63 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <section className={styles.header}>
+          <div className={styles.headerImageContainer}>
+            <ImageComp image={content[contentIndex]} />
+            <NavBar />
+            <CmdComponent handleClick={handleClick} />
+          </div>
+          <div className={styles.headerTextContainer}>
+            <div>
+              <h1 className={styles.headerTitle}>
+                {" "}
+                {content[contentIndex].title}
+              </h1>
+              <p className={styles.headerText}> {content[contentIndex].text}</p>
+              <a
+                className={styles.headerShopNowLinkContainer}
+                href="#"
+                title="shop now"
+              >
+                <p className={styles.headerShopNowLink}>SHOP NOW </p>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+                <Arrow />
+              </a>
+            </div>
+          </div>
+        </section>
+        <section className={styles.about}>
+          <div className={styles.aboutDarkImageContainer}></div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+          <div className={styles.aboutTextContainer}>
+            <h3 className={styles.aboutTitle}>ABOUT OUR FURNITURE</h3>{" "}
+            <p className={styles.headerText}>
+              Our multifunctional collection blends design and function to suit
+              your individual taste. Make each room unique, or pick a cohesive
+              theme that best express your interests and what inspires you. Find
+              the furniture pieces you need, from traditional to contemporary
+              styles or anything in between. Product specialists are available
+              to help you create your dream space.
             </p>
-          </a>
-        </div>
+          </div>
+          <div className={styles.aboutLightImageContainer}></div>
+        </section>
       </main>
-
-      <footer className={styles.footer}>
+      <div className="attribution">
+        Challenge by{" "}
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://www.frontendmentor.io?ref=challenge"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Frontend Mentor
         </a>
-      </footer>
+        . Coded by{" "}
+        <a href="https://adelinked.netlify.app" rel="noreferrer">
+          Adelinked
+        </a>
+        .
+      </div>
     </div>
-  )
+  );
 }
