@@ -26,6 +26,11 @@
   background-color: var(--color-VeryDarkGray);
 }
 
+.leftCmd:focus,
+.rightCmd:focus {
+  outline: 1px solid var(--color-DarkGray);
+}
+
 @media (max-width: 920px) {
   .cmdComponentContainer {
     width: 130px;
