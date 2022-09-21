@@ -7,7 +7,7 @@ const CmdComponent = ({ handleClick }) => {
         onClick={handleClick}
         id="left"
         className={styles.leftCmd}
-        tabIndex="6"
+        tabIndex="0"
       >
         <Image
           src="/images/icon-angle-left.svg"
@@ -20,7 +20,7 @@ const CmdComponent = ({ handleClick }) => {
         onClick={handleClick}
         id="right"
         className={styles.rightCmd}
-        tabIndex="7"
+        tabIndex="0"
       >
         <Image
           src="/images/icon-angle-right.svg"

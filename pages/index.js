@@ -90,7 +90,7 @@ export default function Home() {
           <div className={styles.aboutDarkImageContainer}></div>
 
           <div className={styles.aboutTextContainer}>
-            <h3 className={styles.aboutTitle}>ABOUT OUR FURNITURE</h3>{" "}
+            <h2 className={styles.aboutTitle}>ABOUT OUR FURNITURE</h2>{" "}
             <p className={styles.headerText}>
               Our multifunctional collection blends design and function to suit
               your individual taste. Make each room unique, or pick a cohesive
@@ -103,7 +103,7 @@ export default function Home() {
           <div className={styles.aboutLightImageContainer}></div>
         </section>
       </main>
-      <div className="attribution">
+      <div role="contentinfo" className="attribution">
         Challenge by{" "}
         <a
           href="https://www.frontendmentor.io?ref=challenge"
