@@ -28,7 +28,7 @@ body {
   font-size: 12px;
   color: var(--color-Black);
   -spacing: 1px;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 a,
 a:visited {
