@@ -43,8 +43,8 @@ export default function Home() {
           ? 0
           : contentIndex + 1
         : contentIndex === 0
-        ? contentLen
-        : contentIndex - 1
+          ? contentLen
+          : contentIndex - 1
     );
   };
   return (
@@ -86,7 +86,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.about}>
+        {<section className={styles.about}>
           <div className={styles.aboutDarkImageContainer}></div>
 
           <div className={styles.aboutTextContainer}>
@@ -101,7 +101,7 @@ export default function Home() {
             </p>
           </div>
           <div className={styles.aboutLightImageContainer}></div>
-        </section>
+        </section>}
       </main>
       <div role="contentinfo" className="attribution">
         Challenge by{" "}

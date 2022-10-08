@@ -16,24 +16,28 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     //setWindowWidth(window?.innerWidth);
+    adjustDisplay();
   }, [show]);
 
-  const handleResize = () => {
+  const adjustDisplay = () => {
     if (window?.innerWidth > 768) {
       setShow(false);
       document.getElementById("links").style.left = "0px";
-      document.getElementById("links").style.top = "0px";
-      document.getElementById("logo").style.top = "0px";
+      document.getElementById("links").style.top = "-3vh";
+      document.getElementById("logo").style.top = "-3vh";
     } else {
       document.getElementById("links").style.left = "-180px";
       if (show) {
-        document.getElementById("links").style.top = "0px";
-        document.getElementById("logo").style.top = "-12vh";
+        document.getElementById("links").style.top = "-3vh";
+        document.getElementById("logo").style.top = "-30vh";
       } else {
-        document.getElementById("links").style.top = "-12vh";
-        document.getElementById("logo").style.top = "0vh";
+        document.getElementById("links").style.top = "-30vh";
+        document.getElementById("logo").style.top = "-3vh";
       }
     }
+  }
+  const handleResize = () => {
+    adjustDisplay();
   };
 
   const throttleResizeHandler = useMemo(() => throttle(handleResize, 300));
@@ -46,37 +50,30 @@ const NavBar = () => {
     };
   });
   const openVertNav = () => {
-    document.getElementById("links").style.left = "-180px";
-    if (show) {
-      document.getElementById("links").style.top = "-12vh";
-      document.getElementById("logo").style.top = "0";
-    } else {
-      document.getElementById("links").style.top = "0";
-      document.getElementById("logo").style.top = "-12vh";
-    }
-
     setShow((show) => !show);
+    adjustDisplay();
+
   };
   return (
     <nav>
-      <div className={styles.navbar} id="navbar">
+      <div className={`${styles.navbar} ${show ? styles.navBarWhiteBg : undefined}`} id="navbar">
         <span className={styles.openNav} onClick={openVertNav}>
-          {show ? <FaTimes /> : <FaBars />}
+          {show ? <FaTimes className={styles.closeNavIcon} /> : <FaBars />}
         </span>
         <Logo logoText="room" show={show} />
-        <p>{show}</p>
+
         <div className={styles.linksDiv} id="links">
           <Link href="#">
-            <a title="Careers">home</a>
+            <a title="Home">home</a>
           </Link>
           <Link href="#">
-            <a title="Events">shop</a>
+            <a title="Shop">shop</a>
           </Link>
           <Link href="#">
-            <a title="Products">about</a>
+            <a title="About">about</a>
           </Link>
           <Link href="#">
-            <a title="Support">contact</a>
+            <a title="Contact">contact</a>
           </Link>
         </div>
       </div>
