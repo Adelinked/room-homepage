@@ -35,17 +35,25 @@ let content = [
 export default function Home() {
   const [contentIndex, setContentIndex] = useState(0);
   const handleClick = (e) => {
-    const clicked = e.target.id;
-    const contentLen = content.length - 1;
-    setContentIndex((contentIndex) =>
-      clicked === "right"
-        ? contentIndex === contentLen
-          ? 0
-          : contentIndex + 1
-        : contentIndex === 0
-          ? contentLen
-          : contentIndex - 1
-    );
+    document.getElementById("image").style.opacity = "5%";
+    document.getElementById("headerContainer").style.opacity = "5%";
+    const id = setTimeout(() => {
+      document.getElementById("image").style.opacity = "100%";
+      document.getElementById("headerContainer").style.opacity = "100%";
+      const clicked = e.target.id;
+      const contentLen = content.length - 1;
+
+      setContentIndex((contentIndex) =>
+        clicked === "right"
+          ? contentIndex === contentLen
+            ? 0
+            : contentIndex + 1
+          : contentIndex === 0
+            ? contentLen
+            : contentIndex - 1
+      );
+    }, 300);
+
   };
   return (
     <div className={styles.container}>
@@ -67,9 +75,9 @@ export default function Home() {
             <NavBar />
             <CmdComponent handleClick={handleClick} />
           </div>
-          <div className={styles.headerTextContainer}>
+          <div className={styles.headerTextContainer} id="headerContainer">
             <div>
-              <h1 className={styles.headerTitle}>
+              <h1 className={styles.headerTitle} >
                 {" "}
                 {content[contentIndex].title}
               </h1>

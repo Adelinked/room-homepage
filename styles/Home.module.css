@@ -17,6 +17,7 @@
 .headerTextContainer {
   padding: 130px 7%;
   width: 42%;
+  transition: 200ms ease-in;
 }
 .headerTitle {
   font-size: 3rem;
